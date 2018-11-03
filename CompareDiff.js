@@ -1,8 +1,17 @@
+class Pair{
+    constructor(mergedSentence, similarity){
+        this.mergedSentence = mergedSentence;
+        this.simarlity = similarity;
+    }
+}
 
-document.body.innerHTML = diffString("i have a pen", "i have a pineapple")
 
 function generatePairs(originalSentence, sentenceArray){
-    const returnSet = new Set();
+    var returnSet = [];
+    for(i = 0; i < sentenceArray.length; i++){
+        returnSet.push(diffString(originalSentence, sentenceArray[i]));
+    }
+    return returnSet;
 }
 
 function sortPairsBySimilarity(sentencePairs){
@@ -13,12 +22,6 @@ function sortPairsBySimilarity(sentencePairs){
 
 function computeSimilarity(str1, str2, del, ins){
     return (del + ins)/(str1.length + str2.length);
-}
-class Pair{
-    constructor(mergedSentence, similarity){
-        this.mergedSentence = mergedSentence;
-        this.simarlity = similarity;
-    }
 }
 function escape(s) {
     var n = s;
@@ -82,6 +85,8 @@ function diffString( o, n ) {
       }
     }
   }
+  console.log(str);
+  console.log("computing similarity: ... "+computeSimilarity(o, n, delCount, insCount).toString);
   return new Pair(str, computeSimilarity(o, n, delCount, insCount));
 }
 
