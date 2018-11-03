@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+  <script type="text/javascript" src=""></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-app.js"></script>
 
 <!-- Add additional services that you want to use -->
@@ -59,15 +60,15 @@
   	firebase.database().ref('allpros').child(tag_pro).child(tag_question).on('value', function(snapshot){
   		var retrieve = snapshot.val();
   		var question = get_text();
+  		var allpreviousq = [];
   		for (var i in retrieve) {
-  			console.log(i);
+  			allpreviousq.push(i);
   		}
-  		// var answer = match();
-  		// give_answer(answer);
+  		console.log(allpreviousq);
+  		var answer = ""; // match()
+  		give_answer(answer);
   	})
   }
-
-
 
   function give_answer(str) {
   	document.getElementById('clar').value = str;
