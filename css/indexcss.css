@@ -4,17 +4,15 @@ html{
 
 body {
     background-color: rgb(153, 208, 237);
-    color: rgb(49,136,181);
+    color: black;
     margin: 0;
     height: 100%;
 }
 
-#inpt_search{
-
-}
 .make-halfway{
-    margin-top: 20%;
+    margin-top: 5%;
     margin-bottom: 5%;
+    width: 800px;
 }
 .center-items{
     justify-content: center;
@@ -32,12 +30,10 @@ body {
 }
 #dropdownMenuLink{
     color: white;
-    background-color: rgb(48,136,181);
+    background-color: rgb(56, 119, 159);
 
 }
-p {
-    margin-top: 30px;
-}
+
 .cntr {
     display: table;
     width: 100%;
@@ -57,7 +53,7 @@ p {
     box-sizing: border-box;
     margin: 0px 8px 7px 0px;
     padding: 7px 9px 0px 9px;
-    border: 3px solid rgb(49,136,181);
+    border: 3px solid rgb(56, 119, 159);
     border-radius: 25px;
     transition: all 200ms ease;
     cursor: text;
@@ -69,7 +65,7 @@ p {
     height: 20px;
     right: -5px;
     top: 21px;
-    background: rgb(49,136,181);
+    background: rgb(56, 119, 159);
     border-radius: 3px;
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
@@ -103,7 +99,7 @@ p {
 }
 
 .question {
-    background-color: rgb(84, 152, 189);
+    background-color: rgb(86,153,190);
     width: 800px;
     height: 80%;
     border-radius: 25px;
@@ -121,4 +117,6 @@ p {
     -webkit-box-shadow:none;
     border-color:#cccccc;
 }
-.form-control{width:20%}
+.form-control{
+    width:20%;
+}
