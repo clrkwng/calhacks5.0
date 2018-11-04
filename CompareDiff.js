@@ -1,7 +1,7 @@
 class Pair{
     constructor(mergedSentence, similarity){
         this.mergedSentence = mergedSentence;
-        this.simarlity = similarity;
+        this.similarity = similarity;
     }
 }
 
@@ -9,18 +9,27 @@ class Pair{
 function generatePairs(originalSentence, sentenceArray){
     var returnSet = [];
     for(i = 0; i < sentenceArray.length; i++){
-        returnSet.push(diffString(originalSentence, sentenceArray[i]));
+      returnSet.push(diffString(originalSentence, sentenceArray[i]));
     }
     return returnSet;
 }
 
 function sortPairsBySimilarity(sentencePairs){
-    return sentencePairs.sort(function(a, b){
+    sentencePairs.sort(function(a, b){
+      console.log(a);
+        console.log("a: "+a.similarity);
+        console.log("b: "+b.similarity);
         return a.similarity - b.similarity;
     });
+    return sentencePairs;
+    // for(i=0;i<sentencePairs.length;i++){
+    //     console.log(sentencePairs[i].similarity);
+    // }
 }
 
 function computeSimilarity(str1, str2, del, ins){
+    //console.log(typeof(str2))
+    //console.log("length: " + (str1.length + str2.length));
     return (del + ins)/(str1.length + str2.length);
 }
 function escape(s) {
@@ -33,7 +42,8 @@ function escape(s) {
     return n;
 }
 
-function diffString( o, n ) {
+function diffString(o, n) {
+  console.log("comparing " + o + " and " + n);
   o = o.replace(/\s+$/, '');
   n = n.replace(/\s+$/, '');
   var out = diff(o == "" ? [] : o.split(/\s+/), n == "" ? [] : n.split(/\s+/) );
@@ -61,7 +71,7 @@ function diffString( o, n ) {
       }
   } else {
     if (out.n[0].text == null) {
-      for (n = 0; n < out.o.length && out.o[n].text == null; n++) {
+      for (i = 0; i < out.o.length && out.o[i].text == null; i++) {
         str += '<del>' + escape(out.o[i]) + oSpace[i] + "</del>";
         delCount += escape(out.o[i]).length;
         /* delCount += escape(out.o[n]).length + oSpace[n].length; */
@@ -76,17 +86,17 @@ function diffString( o, n ) {
       } else {
         var pre = "";
 
-        for (n = out.n[i].row + 1; n < out.o.length && out.o[n].text == null; n++ ) {
-          pre += '<del>' + escape(out.o[n]) + oSpace[n] + "</del>";
-          delCount += escape(out.o[n]).length;
+        for (j = out.n[i].row + 1; j < out.o.length && out.o[j].text == null; j++ ) {
+          pre += '<del>' + escape(out.o[j]) + oSpace[j] + "</del>";
+          delCount += escape(out.o[j]).length;
          /*  delCount += escape(out.o[n]).length + oSpace[n].length; */
         }
         str += " " + out.n[i].text + nSpace[i] + pre;
       }
     }
   }
-  console.log(str);
-  console.log("computing similarity: ... "+computeSimilarity(o, n, delCount, insCount).toString);
+  //console.log(str);
+  console.log("computing similarity: ... " + computeSimilarity(o, n, delCount, insCount).toString());
   return new Pair(str, computeSimilarity(o, n, delCount, insCount));
 }
 

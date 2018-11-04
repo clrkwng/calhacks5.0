@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <script type="text/javascript" src="CompareDiff.js"></script>
+  <script type="text/javascript" src="./CompareDiff.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-app.js"></script>
 
 <!-- Add additional services that you want to use -->
@@ -15,9 +15,7 @@
 
 </head>
 <body>
-<textarea id = "question">
-	Why is there an infinite loop?
-</textarea >
+<textarea id = "question">Why is there an infinite loop?</textarea >
 
 <select id = "proj">
 	<option>proj1</option>
@@ -33,7 +31,7 @@
 	match
 </button>
 
-<textarea id = "clar">
+<textarea id = "clar" style="height: 100px">
 	
 </textarea>
 
@@ -64,10 +62,10 @@
   		for (var i in retrieve) {
   			allpreviousq.push(i);
   		}
-  		console.log(allpreviousq);
-  		// var answer = generatePairs(question, allpreviousq)[0].mergedSentence; // match()
-    //   console.log(answer);
-  		// give_answer(answer);
+  		//console.log(allpreviousq);
+  	  var answer = sortPairsBySimilarity(generatePairs(question, allpreviousq))[0].mergedSentence; // match()
+      console.log(answer);
+  		give_answer(answer);
   	})
   }
 
