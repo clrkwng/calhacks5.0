@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script type="text/javascript" src="CompareDiff.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-app.js"></script>
+
+<!-- Add additional services that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-functions.js"></script>
+
+</head>
+<body>
+<textarea id = "question">
+	Why is there an infinite loop?
+</textarea >
+
+<select id = "proj">
+	<option>proj1</option>
+	<option>ptoj2</option>
+</select>
+
+<select id = "q">
+	<option>q1</option>
+	<option>q2</option>
+</select>
+
+<button onclick="find_answer()" style="height: 20px">
+	match
+</button>
+
+<textarea id = "clar">
+	
+</textarea>
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyD_IrC3AUvJsBM-rk_-0H5_oaJf0rRZzuk",
+    authDomain: "chatforhackson.firebaseapp.com",
+    databaseURL: "https://chatforhackson.firebaseio.com",
+    projectId: "chatforhackson",
+    storageBucket: "chatforhackson.appspot.com",
+    messagingSenderId: "44105688346"
+  };
+  firebase.initializeApp(config);
+
+  var get_text = function() {
+  	return document.getElementById('question').value;
+  };
+
+  
+  function find_answer(){
+  	var tag_pro = document.getElementById('proj').value
+  	var tag_question = document.getElementById('q').value
+  	firebase.database().ref('allpros').child(tag_pro).child(tag_question).on('value', function(snapshot){
+  		var retrieve = snapshot.val();
+  		var question = get_text();
+  		var allpreviousq = [];
+  		for (var i in retrieve) {
+  			allpreviousq.push(i);
+  		}
+  		console.log(allpreviousq);
+  		// var answer = generatePairs(question, allpreviousq)[0].mergedSentence; // match()
+    //   console.log(answer);
+  		// give_answer(answer);
+  	})
+  }
+
+  function give_answer(str) {
+  	document.getElementById('clar').value = str;
+  };
+</script>
+
+
+
+</body>
+
+</html>
