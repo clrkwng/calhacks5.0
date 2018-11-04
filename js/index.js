@@ -17,4 +17,10 @@ $(document).ready(function(){
         e.preventDefault();
     });
 });
+$('.dropdown-submenu a.test').click( function (event) {
+    event.preventDefault();
+    var nextSibling = $(this).next();
+    nextSibling.toggleClass("dropped");
+    $('.dropped').not(nextSibling).removeClass('dropped');
+});
 
