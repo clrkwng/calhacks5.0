@@ -17,42 +17,45 @@
     <title>Home</title>
 </head>
 <body>
-<div class="container make-halfway">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="cntr">
-                <div class="cntr-innr">
-                    <label class="search" for="inpt_search">
-                        <input id="inpt_search" type="text" />
-                    </label>
-                    <p>Hover to search a question.</p>
+<div class="question-container">
+    <div class="question">
+        <div class="container make-halfway" style="background-color:red;">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="cntr">
+                        <div class="cntr-innr">
+                            <label class="search" for="inpt_search">
+                                <input id="inpt_search" type="text" />
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div>
-    <div class="custom-select" style="width:200px;">
-        <select id = "proj">
-            <option selected disabled>Project</option>
-            <option value="proj1">Project 1</option>
-            <option value="proj2">Project 2</option>
-        </select>
-    </div>
-    <div class="custom-select" style="width:200px;">
-        <select id = "q">
-            <option selected disabled>Question</option>
-            <option value="q1">Question 1</option>
-            <option value="q2">Question 2</option>
-        </select>
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-3">
-            <button type="button" class="btn btn-primary" onclick="find_answer()">Post</button>
-            <div id="clar"></div>
+        <div style="background-color:red;">
+            <div class="custom-select" style="width:200px;">
+                <select id = "proj">
+                    <option selected disabled>Project</option>
+                    <option value="proj1">Project 1</option>
+                    <option value="proj2">Project 2</option>
+                </select>
+            </div>
+            <div class="custom-select" style="width:200px;">
+                <select id = "q">
+                    <option selected disabled>Question</option>
+                    <option value="q1">Question 1</option>
+                    <option value="q2">Question 2</option>
+                </select>
+            </div>
+        </div>
+        <div class="container" style="background-color: red;">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-primary" onclick="find_answer()">Post</button>
+                    <div id="clar"></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
