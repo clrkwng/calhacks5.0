@@ -52,30 +52,75 @@
   	return document.getElementById('question').value;
   };
 
-  
+  var answer;
+  var times;
+  var retrieve;
+
   function find_answer(){
+    document.getElementById('clar').innerHTML = ""
   	var tag_pro = document.getElementById('proj').value
   	var tag_question = document.getElementById('q').value
   	firebase.database().ref('allpros').child(tag_pro).child(tag_question).on('value', function(snapshot){
-  		var retrieve = snapshot.val();
+  		retrieve = snapshot.val();
+      times = 0;
   		var question = get_text();
   		var allpreviousq = [];
   		for (var i in retrieve) {
   			allpreviousq.push(i);
   		}
   		//console.log(allpreviousq);
-  	  var answer = sortPairsBySimilarity(generatePairs(question, allpreviousq))[0].mergedSentence; // match()
-      console.log(answer);
-  		give_answer(answer);
+  	  answer = sortPairsBySimilarity(generatePairs(question, allpreviousq)); // match()
+      console.log(answer[times].mergedSentence);
+  		give_answer(answer[times].mergedSentence);
   	})
   }
 
   function give_answer(str) {
-  	document.getElementById('clar').innerHTML = "Are u asking: \n" + str.replace("?","")+"?";
+    var parent = document.getElementById('clar');
+    var div = document.createElement("div");
+    div.innerHTML = "Are u asking: \n" + str.replace("?","")+"?"
+
+    var yes = document.createElement("input");
+    yes.setAttribute("type", "button");
+    yes.setAttribute("onclick", "yes()");
+    yes.setAttribute("value","yes");
+    yes.setAttribute("style","height:20px,width:50px");
+
+    var no = document.createElement("input");
+    no.setAttribute("type", "button");
+    no.setAttribute("onclick", "no()");
+    no.setAttribute("value","no");
+    no.setAttribute("style","height:20px,width:50px");
+
+    parent.appendChild(div);
+    parent.appendChild(yes);
+    parent.appendChild(no);
   };
+
+  function yes(){
+    console.log(answer);
+    var parent = document.getElementById('clar');
+    var div = document.createElement("div");
+    div.innerHTML = retrieve[answer[times].original];
+    parent.appendChild(div);
+  }
+
+  function no(){
+    times = times + 1;
+    var parent = document.getElementById('clar');
+
+    if (times == 3) {
+      var input = document.createElement('input');
+      input.setAttribute("type", "button");
+      input.setAttribute("value", "put it into unresolved");
+      input.setAttribute("style", "height:30px, width:80px");
+      input.setAttribute("onclick", "unresolved()");
+      parent.appendChild(input);
+    } else {
+      give_answer(answer[times].mergedSentence);
+    }
+  }
 </script>
-
-
 
 </body>
 

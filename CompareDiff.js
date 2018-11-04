@@ -1,5 +1,6 @@
 class Pair{
-    constructor(mergedSentence, similarity){
+    constructor(original, mergedSentence, similarity){
+        this.original = original;
         this.mergedSentence = mergedSentence;
         this.similarity = similarity;
     }
@@ -43,7 +44,7 @@ function escape(s) {
 }
 
 function diffString(o, n) {
-  console.log("comparing " + o + " and " + n);
+  var original = n;
   o = o.replace(/\s+$/, '');
   n = n.replace(/\s+$/, '');
   var out = diff(o == "" ? [] : o.split(/\s+/), n == "" ? [] : n.split(/\s+/) );
@@ -97,7 +98,7 @@ function diffString(o, n) {
   }
   //console.log(str);
   console.log("computing similarity: ... " + computeSimilarity(o, n, delCount, insCount).toString());
-  return new Pair(str, computeSimilarity(o, n, delCount, insCount));
+  return new Pair(original, str, computeSimilarity(o, n, delCount, insCount));
 }
 
 function randomColor() {
