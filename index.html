@@ -104,12 +104,14 @@
     div.innerHTML = "Are u asking: \n" + str.replace("?","")+"?"
 
     var yes = document.createElement("input");
+    yes.setAttribute("class", "yes");
     yes.setAttribute("type", "button");
-    yes.setAttribute("onclick", "yes();this.disabled=true");
+    yes.setAttribute("onclick", "yes()");
     yes.setAttribute("value","yes");
     yes.setAttribute("style","height:20px,width:50px");
 
     var no = document.createElement("input");
+    no.setAttribute("class","no");
     no.setAttribute("type", "button");
     no.setAttribute("onclick", "no()");
     no.setAttribute("value","no");
@@ -126,6 +128,14 @@
     var div = document.createElement("div");
     div.innerHTML = retrieve[answer[times].original];
     parent.appendChild(div);
+    var no_collection = document.getElementsByClassName("no");
+    var yes_collection = document.getElementsByClassName("yes");
+    for (i = 0; i < no_collection.length; i++) {
+        no_collection[i].disabled = true;
+    }
+    for (j = 0; j < yes_collection.length; j++) {
+        yes_collection[j].disabled = true;
+    }
   }
 
   function no(){
@@ -133,14 +143,22 @@
     var parent = document.getElementById('clar');
 
     if (times == 3) {
-      var input = document.createElement('input');
-      input.setAttribute("type", "button");
-      input.setAttribute("value", "put it into unresolved");
-      input.setAttribute("style", "height:30px, width:80px");
-      input.setAttribute("onclick", "unresolved()");
-      parent.appendChild(input);
+        var input = document.createElement('input');
+        input.setAttribute("type", "button");
+        input.setAttribute("value", "put it into unresolved");
+        input.setAttribute("style", "height:30px, width:80px");
+        input.setAttribute("onclick", "unresolved()");
+        parent.appendChild(input);
+        var no_collection = document.getElementsByClassName("no");
+        var yes_collection = document.getElementsByClassName("yes");
+        for (i = 0; i < no_collection.length; i++) {
+            no_collection[i].disabled = true;
+        }
+        for (j = 0; j < yes_collection.length; j++) {
+            yes_collection[j].disabled = true;
+        }
     } else {
-      give_answer(answer[times].mergedSentence);
+        give_answer(answer[times].mergedSentence);
     }
   }
 </script>
