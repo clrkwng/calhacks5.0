@@ -4,6 +4,16 @@ body {
     margin: 0;
 }
 
+.make-halfway{
+    margin-top: 20%;
+    margin-bottom: 10%;
+}
+#dropdownMenuLink{
+    color: white;
+    background-color: rgb(48,136,181);
+
+}
+
 #content {
     position: absolute;
     height: 50px;
