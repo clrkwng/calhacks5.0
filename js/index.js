@@ -1,15 +1,12 @@
 // -
-function expand() {
-    $(".search").toggleClass("close");
-    $(".input").toggleClass("square");
-    if ($('.search').hasClass('close')) {
-        $('input').focus();
-    } else {
-        $('input').blur();
-    }
-}
-$('button').on('click', expand);
+$("#inpt_search").on('focus', function () {
+    $(this).parent('label').addClass('active');
+});
 
+$("#inpt_search").on('blur', function () {
+    if($(this).val().length == 0)
+        $(this).parent('label').removeClass('active');
+});
 $(document).ready(function(){
     $('.dropdown-submenu a.test').on("click", function(e){
         $(this).next('ul').toggle();
