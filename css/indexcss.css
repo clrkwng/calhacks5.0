@@ -4,7 +4,7 @@ html{
 
 body {
     background-color: rgb(153, 208, 237);
-    color: #fff;
+    color: rgb(49,136,181);
     margin: 0;
     height: 100%;
 }
@@ -14,7 +14,7 @@ body {
 }
 .make-halfway{
     margin-top: 20%;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
 }
 .center-items{
     justify-content: center;
@@ -57,7 +57,7 @@ p {
     box-sizing: border-box;
     margin: 0px 8px 7px 0px;
     padding: 7px 9px 0px 9px;
-    border: 3px solid #FFFFFF;
+    border: 3px solid rgb(49,136,181);
     border-radius: 25px;
     transition: all 200ms ease;
     cursor: text;
@@ -69,7 +69,7 @@ p {
     height: 20px;
     right: -5px;
     top: 21px;
-    background: #FFFFFF;
+    background: rgb(49,136,181);
     border-radius: 3px;
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
@@ -100,25 +100,25 @@ p {
     align-items: center;
     justify-content: center;
     background-color: rgb(153, 208, 237);
-  }
-  
-  .question {
+}
+
+.question {
     background-color: rgb(84, 152, 189);
     width: 800px;
     height: 80%;
     border-radius: 25px;
     box-shadow: 10px 5px 20px rgba(0, 0, 0, 0.4);
-  }
+}
 
-  .add-on .input-group-btn > .btn {
+.add-on .input-group-btn > .btn {
     border-left-width:0;left:-2px;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  }
-  /* stop the glowing blue shadow */
-  .add-on .form-control:focus {
-   box-shadow:none;
-   -webkit-box-shadow:none; 
-   border-color:#cccccc; 
-  }
-  .form-control{width:20%}
+}
+/* stop the glowing blue shadow */
+.add-on .form-control:focus {
+    box-shadow:none;
+    -webkit-box-shadow:none;
+    border-color:#cccccc;
+}
+.form-control{width:20%}
