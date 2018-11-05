@@ -31,9 +31,10 @@
 	match
 </button>
 
-<textarea id = "clar" style="height: 100px">
+<div id = "clar"></div>
+<!-- <textarea id = "clar" style="height: 100px">
 	
-</textarea>
+</textarea> -->
 
 <script>
   // Initialize Firebase
@@ -70,7 +71,7 @@
   }
 
   function give_answer(str) {
-  	document.getElementById('clar').value = str;
+  	document.getElementById('clar').innerHTML = "Are u asking: \n" + str.replace("?","")+"?";
   };
 </script>
 
